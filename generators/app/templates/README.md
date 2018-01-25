@@ -28,6 +28,72 @@ The back-end api was generated based on [generator-api](https://github.com/ndelv
 
 To run locally, requires MongoDB installed and running ([Install MongoDB](https://docs.mongodb.com/manual/installation/)).
 
+### File tree
+```
+├── client
+│   ├── app
+│   │   ├── app.component.css
+│   │   ├── app.component.html
+│   │   ├── app.component.spec.ts
+│   │   ├── app.component.ts
+│   │   ├── app.module.ts
+│   │   ├── pages
+│   │   │   ├── home
+│   │   │   │   ├── home.component.css
+│   │   │   │   ├── home.component.html
+│   │   │   │   ├── home.component.spec.ts
+│   │   │   │   └── home.component.ts
+│   │   │   └── not-found
+│   │   │       ├── not-found.component.css
+│   │   │       ├── not-found.component.html
+│   │   │       ├── not-found.component.spec.ts
+│   │   │       └── not-found.component.ts
+│   │   └── services
+│   │       ├── app.service.spec.ts
+│   │       └── app.service.ts
+│   ├── assets
+│   ├── environments
+│   │   ├── environment.prod.ts
+│   │   └── environment.ts
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── main.ts
+│   ├── polyfills.ts
+│   ├── styles.css
+│   ├── test.ts
+│   ├── tsconfig.app.json
+│   ├── tsconfig.spec.json
+│   └── typings.d.ts
+├── e2e
+│   ├── app.e2e-spec.ts
+│   ├── app.po.ts
+│   └── tsconfig.e2e.json
+├── karma.conf.js
+├── package.json
+├── protractor.conf.js
+├── README.md
+├── server
+│   ├── config.js
+│   ├── index.js
+│   ├── lib
+│   │   ├── controller.js
+│   │   └── facade.js
+│   ├── model
+│   │   ├── food
+│   │   │   ├── controller.js
+│   │   │   ├── facade.js
+│   │   │   ├── router.js
+│   │   │   └── schema.js
+│   │   └── user
+│   │       ├── controller.js
+│   │       ├── facade.js
+│   │       ├── router.js
+│   │       └── schema.js
+│   └── routes.js
+├── tsconfig.json
+└── tslint.json
+```
+
 ### Development server
 
 Run `npm run dev` for a dev server. Navigate to `http://localhost:8080/`. Wait until the app is built. The app will automatically rebuild if you change any of the source files.
