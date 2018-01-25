@@ -62,7 +62,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## License
 
-MIT © [Amimaro]()
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 
 [npm-image]: https://badge.fury.io/js/generator-angular-api.svg
