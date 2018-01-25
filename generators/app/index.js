@@ -40,12 +40,6 @@ module.exports = class extends Generator {
       }
     );
     this.fs.copyTpl(
-      this.templatePath('.env'),
-      this.destinationPath('.env'), {
-        name: this.props.name
-      }
-    );
-    this.fs.copyTpl(
       this.templatePath('server/config.js'),
       this.destinationPath('server/config.js'), {
         name: this.props.name
