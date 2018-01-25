@@ -25,6 +25,7 @@ This front-end was generated based on [Angular CLI](https://github.com/angular/a
 ### Back-end
 
 The back-end api was generated based on [generator-api](https://github.com/ndelvalle/generator-api) project which uses NodeJS, Express and Mongoose.
+Requires MongoDB to be installed and running ([Install MongoDB](https://docs.mongodb.com/manual/installation/)).
 
 ### Development server
 
