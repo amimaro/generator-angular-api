@@ -13,7 +13,7 @@ npm install -g generator-angular-api
 Then generate your new project:
 
 ```bash
-yo rest-angular
+yo angular-api
 ```
 
 ## The Project
@@ -31,6 +31,14 @@ To run locally, requires MongoDB installed and running ([Install MongoDB](https:
 ### Development server
 
 Run `npm run dev` for a dev server. Navigate to `http://localhost:8080/`. Wait until the app is built. The app will automatically rebuild if you change any of the source files.
+
+##### .env example (place it on root directory)
+```
+PORT=8080
+NODE_ENV=dev
+APP_URL=http://localhost:8080/
+MONGO_DB_URI=http://localhost:27017/angular-api
+```
 
 ### Code scaffolding
 
