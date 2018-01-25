@@ -26,6 +26,8 @@ This front-end was generated based on [Angular CLI](https://github.com/angular/a
 
 The back-end api was generated based on [generator-api](https://github.com/ndelvalle/generator-api) project which uses NodeJS, Express and Mongoose.
 
+Requires MongoDB to be installed and running ([Install MongoDB](https://docs.mongodb.com/manual/installation/)).
+
 ### Development server
 
 Run `npm run dev` for a dev server. Navigate to `http://localhost:8080/`. Wait until the app is built. The app will automatically rebuild if you change any of the source files.
@@ -60,7 +62,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## License
 
-MIT © [Amimaro]()
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 
 [npm-image]: https://badge.fury.io/js/generator-angular-api.svg
