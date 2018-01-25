@@ -10,7 +10,19 @@
   },
   "files": ["generators"],
   "main": "generators/index.js",
-  "keywords": ["", "yeoman-generator"],
+  "keywords": [
+    "angular",
+    "cli",
+    "api",
+    "generator",
+    "yeoman",
+    "rest",
+    "mongoose",
+    "express",
+    "node",
+    "fullstack",
+    "yeoman-generator"
+  ],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
     "yeoman-assert": "^3.1.0",
