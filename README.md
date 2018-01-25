@@ -20,11 +20,11 @@ yo rest-angular
 
 ### Front-end
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+This front-end was generated based on [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
 ### Back-end
 
-The backend api was generate based on [generator-api](https://github.com/ndelvalle/generator-api) project which uses NodeJS, Express and Mongoose.
+The back-end api was generated based on [generator-api](https://github.com/ndelvalle/generator-api) project which uses NodeJS, Express and Mongoose.
 
 ### Development server
 
