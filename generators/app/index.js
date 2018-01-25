@@ -1,6 +1,16 @@
 var Generator = require('yeoman-generator');
+var chalk = require('chalk');
+var yosay = require('yosay');
 
 module.exports = class extends Generator {
+
+  contructor(args, opts) {
+    super(args, opts)
+
+    this.log(yosay(
+      'Welcome to ' + chalk.red('angular-api') + ' generator!'
+    ));
+  }
 
   prompting() {
     return this.prompt([{
