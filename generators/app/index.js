@@ -4,15 +4,12 @@ var yosay = require('yosay');
 
 module.exports = class extends Generator {
 
-  contructor(args, opts) {
-    super(args, opts)
+  prompting() {
 
     this.log(yosay(
       'Welcome to ' + chalk.red('angular-api') + ' generator!'
     ));
-  }
 
-  prompting() {
     return this.prompt([{
       type: 'input',
       name: 'name',
