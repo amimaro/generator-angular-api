@@ -141,7 +141,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 [npm-image]: https://badge.fury.io/js/generator-angular-api.svg
 [npm-url]: https://npmjs.org/package/generator-angular-api
-[travis-image]: https://travis-ci.org/Amimaro/generator-angular-api.svg?branch=master
-[travis-url]: https://travis-ci.org/Amimaro/generator-angular-api
-[daviddm-image]: https://david-dm.org/Amimaro/generator-angular-api.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/Amimaro/generator-angular-api
+[travis-image]: https://travis-ci.org/amimaro/generator-angular-api.svg?branch=master
+[travis-url]: https://travis-ci.org/amimaro/generator-angular-api
+[daviddm-image]: https://david-dm.org/amimaro/generator-angular-api.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/amimaro/generator-angular-api
