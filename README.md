@@ -1,5 +1,8 @@
-# generator-angular-api [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
->
+# generator-angular-api 
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] 
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/fc32f4fa319476844aa4/maintainability)](https://codeclimate.com/github/amimaro/generator-angular-api/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/fc32f4fa319476844aa4/test_coverage)](https://codeclimate.com/github/amimaro/generator-angular-api/test_coverage)
+
 
 ## Generator Installation
 
