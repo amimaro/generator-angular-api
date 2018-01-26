@@ -30,46 +30,29 @@ module.exports = class extends Generator {
 
     this.fs.copy(
       this.templatePath(''),
-      this.destinationPath('')
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('package.json'),
-      this.destinationPath('package.json'), {
+      this.destinationPath(''), {
         name: this.props.name,
         description: this.props.description
       }
     );
-    this.fs.copyTpl(
-      this.templatePath('.angular-cli.json'),
-      this.destinationPath('.angular-cli.json'), {
-        name: this.props.name
-      }
-    );
-    this.fs.copyTpl(
-      this.templatePath('server/config.js'),
-      this.destinationPath('server/config.js'), {
-        name: this.props.name
-      }
-    );
-    this.fs.copyTpl(
-      this.templatePath('e2e/app.e2e-spec.ts'),
-      this.destinationPath('e2e/app.e2e-spec.ts'), {
-        name: this.props.name
-      }
-    );
-    this.fs.copyTpl(
-      this.templatePath('client/index.html'),
-      this.destinationPath('client/index.html'), {
-        name: this.props.name
-      }
-    );
-    this.fs.copyTpl(
-      this.templatePath('README.md'),
-      this.destinationPath('README.md'), {
-        name: this.props.name
-      }
-    );
+
+    let files = [
+      'package.json',
+      '.angular-cli.json',
+      'server/config.js',
+      'e2e/app.e2e-spec.ts',
+      'client/index.html',
+      'README.md'
+    ]
+    for (let file of files) {
+      this.fs.copyTpl(
+        this.templatePath(file),
+        this.destinationPath(file), {
+          name: this.props.name,
+          description: this.props.description
+        }
+      );
+    }
 
   }
 
