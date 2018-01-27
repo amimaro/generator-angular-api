@@ -25,7 +25,7 @@ module.exports = class extends Generator {
     }, {
       type: 'list',
       name: 'style',
-      message: 'What framework do you want to use today?',
+      message: 'What style do you want to use today?',
       choices: ['None', 'Angular Material', 'Bootstrap', 'Bulma']
     }]).then((answers) => {
       this.props = answers
