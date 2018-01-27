@@ -11,6 +11,7 @@ let files = [
   'package.json',
   'karma.conf.js',
   '.gitignore',
+  'gulpfile.js',
   '.editorconfig',
   '.angular-cli.json',
   'e2e',
