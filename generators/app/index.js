@@ -1,6 +1,6 @@
-var Generator = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
+var Generator = require('yeoman-generator')
+var chalk = require('chalk')
+var yosay = require('yosay')
 
 module.exports = class extends Generator {
 
@@ -8,7 +8,7 @@ module.exports = class extends Generator {
 
     this.log(yosay(
       'Welcome to ' + chalk.red('angular-api') + ' generator!'
-    ));
+    ))
 
     return this.prompt([{
       type: 'input',
@@ -20,47 +20,86 @@ module.exports = class extends Generator {
       name: 'description',
       message: 'Project description',
       default: 'Awesome description'
+    }, {
+      type: 'list',
+      name: 'style',
+      message: 'What framework do you want to use today?',
+      choices: ['None', 'Angular Material', 'Bootstrap', 'Bulma']
     }]).then((answers) => {
       this.props = answers
-      this.log(answers.name);
-    });
+      this.log('\n\n')
+      this.log(chalk.yellow('Name: ' + answers.name))
+      this.log(chalk.yellow('Description: ' + answers.description))
+      this.log(chalk.yellow('Front-end Framework: ' + answers.style))
+      this.log('\n\n')
+
+      this.props.style = this.props.style.toLowerCase().replace('angular ', '')
+    })
+
   }
 
   writing() {
 
-    this.fs.copy(
-      this.templatePath(''),
-      this.destinationPath(''), {
-        name: this.props.name,
-        description: this.props.description
-      }
-    );
-
     let files = [
-      'package.json',
-      '.angular-cli.json',
-      'server/config.js',
-      'e2e/app.e2e-spec.ts',
-      'client/index.html',
-      'README.md'
+      ['core/', 'tslint.json'],
+      ['core/', 'tsconfig.json'],
+      ['core/', 'README.md'],
+      ['core/', 'protractor.conf.js'],
+      ['core/', 'package.json'],
+      ['core/', 'karma.conf.js'],
+      ['core/', '.gitignore'],
+      ['core/', '.editorconfig'],
+      ['core/', '.angular-cli.json'],
+      ['core/', 'e2e'],
+      ['core/', 'server'],
+      ['core/', 'client/typings.d.ts'],
+      ['core/', 'client/tsconfig.spec.json'],
+      ['core/', 'client/tsconfig.app.json'],
+      ['core/', 'client/test.ts'],
+      ['core/', 'client/polyfills.ts'],
+      ['core/', 'client/main.ts'],
+      ['core/', 'client/favicon.ico'],
+      ['core/', 'client/environments'],
+      ['core/', 'client/assets/.gitkeep'],
     ]
+
+    files.push(['styles/' + this.props.style + '/', 'client'])
+    files.push(['styles/' + this.props.style + '/', '.angular-cli.json'])
+
+    switch (this.props.style) {
+      case 'material':
+        this.props.style = '@angular/material @angular/cdk @angular/animations'
+        break
+      case 'bootstrap':
+        this.props.style = 'jquery bootstrap'
+        break
+      case 'bulma':
+        this.props.style = 'bulma'
+        break
+      default:
+        break
+    }
+
     for (let file of files) {
       this.fs.copyTpl(
-        this.templatePath(file),
-        this.destinationPath(file), {
+        this.templatePath(file[0] + file[1]),
+        this.destinationPath(file[1]), {
           name: this.props.name,
           description: this.props.description
         }
-      );
+      )
     }
 
   }
 
   install() {
-    this.installDependencies({
-      bower: false,
-      npm: true
-    }).then(() => console.log('Everything is ready!'));
+    this.npmInstall(this.props.style.split(' '), {
+      'save': true
+    })
+    this.npmInstall().then(() => {
+      this.log('\n\nEverything is ready!!')
+      this.log('Run ' + chalk.green('npm run dev') + ' to start creating.\n')
+    })
   }
 
 };
