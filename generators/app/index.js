@@ -10,6 +10,8 @@ module.exports = class extends Generator {
       'Welcome to ' + chalk.red('angular-api') + ' generator!'
     ))
 
+    this.appname = this.appname.replace(/\s+/g, '-');
+
     return this.prompt([{
       type: 'input',
       name: 'name',
@@ -47,6 +49,7 @@ module.exports = class extends Generator {
       ['core/', 'protractor.conf.js'],
       ['core/', 'package.json'],
       ['core/', 'karma.conf.js'],
+      ['core/', 'gulpfile.js'],
       ['core/', '.gitignore'],
       ['core/', '.editorconfig'],
       ['core/', '.angular-cli.json'],
