@@ -25,8 +25,8 @@ module.exports = class extends Generator {
     }, {
       type: 'list',
       name: 'style',
-      message: 'What framework do you want to use today?',
-      choices: ['None', 'Angular Material', 'Bootstrap', 'Bulma']
+      message: 'What style do you want to use today?',
+      choices: ['None', 'Bulma', 'Bootstrap', 'Angular Material' ]
     }]).then((answers) => {
       this.props = answers
       this.log('\n\n')
@@ -66,17 +66,24 @@ module.exports = class extends Generator {
       ['core/', 'client/assets/.gitkeep'],
     ]
 
-    files.push(['styles/' + this.props.style + '/', 'client'])
+    files.push(['styles/' + this.props.style + '/', 'client/app'])
+    files.push(['styles/' + this.props.style + '/', 'client/index.html'])
+    files.push(['styles/' + this.props.style + '/', 'client/dist/index.html'])
+    files.push(['styles/' + this.props.style + '/', 'client/main.ts'])
+    files.push(['styles/' + this.props.style + '/', 'client/styles.css'])
     files.push(['styles/' + this.props.style + '/', '.angular-cli.json'])
 
     switch (this.props.style) {
       case 'material':
-        this.props.style = '@angular/material @angular/cdk @angular/animations'
+        this.props.style = '@angular/material@5.1.0 @angular/cdk @angular/animations @angular/forms hammerjs'
         break
       case 'bootstrap':
         this.props.style = 'jquery bootstrap'
         break
       case 'bulma':
+        this.fs.copy(
+          this.templatePath('styles/bulma/client/assets/made-with-bulma.png'),
+          this.destinationPath('client/assets/made-with-bulma.png'))
         this.props.style = 'bulma'
         break
       default:
