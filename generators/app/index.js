@@ -68,12 +68,13 @@ module.exports = class extends Generator {
 
     files.push(['styles/' + this.props.style + '/', 'client/app'])
     files.push(['styles/' + this.props.style + '/', 'client/index.html'])
+    files.push(['styles/' + this.props.style + '/', 'client/main.ts'])
     files.push(['styles/' + this.props.style + '/', 'client/styles.css'])
     files.push(['styles/' + this.props.style + '/', '.angular-cli.json'])
 
     switch (this.props.style) {
       case 'material':
-        this.props.style = '@angular/material @angular/cdk @angular/animations'
+        this.props.style = '@angular/material@5.1.0 @angular/cdk @angular/animations @angular/forms hammerjs'
         break
       case 'bootstrap':
         this.props.style = 'jquery bootstrap'
