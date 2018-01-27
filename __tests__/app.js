@@ -19,6 +19,7 @@ let files = [
   'client/index.html',
   'client/styles.css',
   'client/app/app.module.ts',
+  'client/assets/.gitkeep'
 ]
 
 let fronts = ['None', 'Angular Material', 'Bootstrap', 'Bulma']
@@ -44,6 +45,7 @@ for (let f of fronts) {
       } else if (f === 'Bootstrap') {
         assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/bootstrap\/dist\/js\/bootstrap\.bundle\.min\.js"/);
       } else if (f === 'Bulma') {
+        assert.file(['client/assets/made-with-bulma.png']);
         assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/bulma\/css\/bulma\.css"/);
       } else {
         assert.fileContent('.angular-cli.json', /"styles": \["styles\.css"\]/);
