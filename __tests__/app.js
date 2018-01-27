@@ -41,6 +41,7 @@ for (let f of fronts) {
     });
 
     it('check configs', () => {
+      assert.file(['.gitignore']);
       if (f === 'Angular Material') {
         assert.fileContent('client/main.ts', /import 'hammerjs';/);
         assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);

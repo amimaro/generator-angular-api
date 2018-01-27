@@ -26,7 +26,7 @@ module.exports = class extends Generator {
       type: 'list',
       name: 'style',
       message: 'What style do you want to use today?',
-      choices: ['None', 'Bulma', 'Bootstrap', 'Angular Material' ]
+      choices: ['None', 'Bulma', 'Bootstrap', 'Angular Material']
     }]).then((answers) => {
       this.props = answers
       this.log('\n\n')
@@ -50,7 +50,6 @@ module.exports = class extends Generator {
       ['core/', 'package.json'],
       ['core/', 'karma.conf.js'],
       ['core/', 'gulpfile.js'],
-      ['core/', '.gitignore'],
       ['core/', '.editorconfig'],
       ['core/', '.angular-cli.json'],
       ['core/', 'e2e'],
@@ -99,6 +98,13 @@ module.exports = class extends Generator {
         }
       )
     }
+    this.fs.copy(
+      this.templatePath('core/_.gitignore'),
+      this.destinationPath('.gitignore'), {
+        name: this.props.name,
+        description: this.props.description
+      }
+    )
 
   }
 
