@@ -3,58 +3,51 @@ const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
-describe('generator-angular-api:app', () => {
-  beforeAll(() => {
-    return helpers.run(path.join(__dirname, '../generators/app'))
-      .withPrompts({
-        name: 'name',
-        description: 'description'
-      });
-  });
+let files = [
+  'tslint.json',
+  'tsconfig.json',
+  'README.md',
+  'protractor.conf.js',
+  'package.json',
+  'karma.conf.js',
+  '.gitignore',
+  '.editorconfig',
+  '.angular-cli.json',
+  'e2e',
+  'server',
+  'client/index.html',
+  'client/styles.css',
+  'client/app/app.module.ts',
+]
 
-  it('create config files', () => {
-    assert.file([
-      '.angular-cli.json',
-      'karma.conf.js',
-      'package.json',
-      'protractor.conf.js',
-      'tsconfig.json',
-      'tslint.json',
-    ]);
-  });
+let fronts = ['None', 'Angular Material', 'Bootstrap', 'Bulma']
 
-  it('creates server', () => {
-    assert.file([
-      'server/index.js',
-      'server/config.js',
-      'server/routes.js',
-    ]);
-  });
+for (let f of fronts) {
+  describe('generator-angular-api:app Front-end = ' + f, () => {
+    beforeAll(() => {
+      return helpers.run(path.join(__dirname, '../generators/app'))
+        .withPrompts({
+          name: 'name',
+          description: 'description',
+          style: f,
+        });
+    });
 
-  it('creates client', () => {
-    assert.file([
-      'client/index.html',
-      'client/main.ts',
-      'client/polyfills.ts',
-      'client/styles.css',
-      'client/test.ts',
-      'client/tsconfig.app.json',
-      'client/tsconfig.spec.json',
-      'client/typings.d.ts',
-      'client/app/app.component.css',
-      'client/app/app.component.html',
-      'client/app/app.component.spec.ts',
-      'client/app/app.component.ts',
-      'client/app/app.module.ts',
-      'client/app/pages/home/home.component.css',
-      'client/app/pages/home/home.component.html',
-      'client/app/pages/home/home.component.spec.ts',
-      'client/app/pages/home/home.component.ts',
-      'client/app/pages/not-found/not-found.component.css',
-      'client/app/pages/not-found/not-found.component.html',
-      'client/app/pages/not-found/not-found.component.spec.ts',
-      'client/app/pages/not-found/not-found.component.ts',
-    ]);
-  });
+    it('create files', () => {
+      assert.file(files);
+    });
 
-});
+    it('check configs', () => {
+      if (f === 'Angular Material') {
+        assert.fileContent('client/styles.css', /@import '~@angular\/material\/prebuilt-themes\/deeppurple-amber\.css';/);
+      } else if (f === 'Bootstrap') {
+        assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/bootstrap\/dist\/js\/bootstrap\.bundle\.min\.js"/);
+      } else if (f === 'Bulma') {
+        assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/bulma\/css\/bulma\.css"/);
+      } else {
+        assert.fileContent('.angular-cli.json', /"styles": \["styles\.css"\]/);
+      }
+    });
+
+  });
+}
