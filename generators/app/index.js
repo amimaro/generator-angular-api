@@ -68,6 +68,7 @@ module.exports = class extends Generator {
 
     files.push(['styles/' + this.props.style + '/', 'client/app'])
     files.push(['styles/' + this.props.style + '/', 'client/index.html'])
+    files.push(['styles/' + this.props.style + '/', 'client/dist/index.html'])
     files.push(['styles/' + this.props.style + '/', 'client/main.ts'])
     files.push(['styles/' + this.props.style + '/', 'client/styles.css'])
     files.push(['styles/' + this.props.style + '/', '.angular-cli.json'])
