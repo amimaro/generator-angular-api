@@ -26,7 +26,7 @@ module.exports = class extends Generator {
       type: 'list',
       name: 'style',
       message: 'What style do you want to use today?',
-      choices: ['None', 'Angular Material', 'Bootstrap', 'Bulma']
+      choices: ['None', 'Bulma', 'Bootstrap', 'Angular Material' ]
     }]).then((answers) => {
       this.props = answers
       this.log('\n\n')
