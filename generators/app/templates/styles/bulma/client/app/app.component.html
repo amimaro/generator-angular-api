@@ -1,1 +1,43 @@
-<router-outlet></router-outlet>
+<section class="hero is-primary">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a href="https://bulma.io" target="_blank" style="margin:30px">
+              <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="256" height="48">
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="hero-head menu">
+
+  </div>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Welcome <%= name %>!
+      </h1>
+      <h2 class="subtitle">
+        Go to client/app/app.component.html to get started
+      </h2>
+    </div>
+  </div>
+</section>
+
+<div class="container" style="padding: 10px">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </div>
+</footer>
