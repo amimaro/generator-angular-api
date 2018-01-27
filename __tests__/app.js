@@ -41,13 +41,17 @@ for (let f of fronts) {
 
     it('check configs', () => {
       if (f === 'Angular Material') {
+        assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
         assert.fileContent('client/styles.css', /@import '~@angular\/material\/prebuilt-themes\/deeppurple-amber\.css';/);
       } else if (f === 'Bootstrap') {
+        assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
         assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/bootstrap\/dist\/js\/bootstrap\.bundle\.min\.js"/);
       } else if (f === 'Bulma') {
         assert.file(['client/assets/made-with-bulma.png']);
         assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/bulma\/css\/bulma\.css"/);
+        assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
       } else {
+        assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
         assert.fileContent('.angular-cli.json', /"styles": \["styles\.css"\]/);
       }
     });
