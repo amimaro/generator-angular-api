@@ -66,7 +66,9 @@ module.exports = class extends Generator {
       ['core/', 'client/assets/.gitkeep'],
     ]
 
-    files.push(['styles/' + this.props.style + '/', 'client'])
+    files.push(['styles/' + this.props.style + '/', 'client/app'])
+    files.push(['styles/' + this.props.style + '/', 'client/index.html'])
+    files.push(['styles/' + this.props.style + '/', 'client/styles.css'])
     files.push(['styles/' + this.props.style + '/', '.angular-cli.json'])
 
     switch (this.props.style) {
@@ -77,6 +79,9 @@ module.exports = class extends Generator {
         this.props.style = 'jquery bootstrap'
         break
       case 'bulma':
+        this.fs.copy(
+          this.templatePath('styles/bulma/client/assets/made-with-bulma.png'),
+          this.destinationPath('client/assets/made-with-bulma.png'))
         this.props.style = 'bulma'
         break
       default:
