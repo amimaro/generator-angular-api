@@ -18,6 +18,7 @@ let files = [
   'server',
   'client/index.html',
   'client/styles.css',
+  'client/dist/index.html',
   'client/app/app.module.ts',
   'client/assets/.gitkeep'
 ]
