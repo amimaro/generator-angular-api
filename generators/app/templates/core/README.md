@@ -144,7 +144,7 @@ To run locally, requires MongoDB installed and running ([Install MongoDB](https:
 │   └── tsconfig.e2e.json
 ├── .gitignore
 ├── .angular-cli.json
-├── editorconfig
+├── .editorconfig
 ├── gulpfile.js
 ├── karma.conf.js
 ├── package.json
