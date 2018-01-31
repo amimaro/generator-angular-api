@@ -25,17 +25,35 @@ module.exports = class extends Generator {
     }, {
       type: 'list',
       name: 'style',
-      message: 'What style do you want to use today?',
-      choices: ['None', 'Bulma', 'Bootstrap', 'Angular Material']
+      message: 'What css framework do you want to use today?',
+      choices: [
+        'None',
+        'Bulma (https://bulma.io/)',
+        'Bootstrap (https://getbootstrap.com/)',
+        'Angular Material (https://material.angular.io/)'
+      ]
+    }, {
+      type: 'list',
+      name: 'icon',
+      message: 'More Icons?',
+      choices: [
+        'No, thanks!',
+        'Fontawesome (http://fontawesome.io/)',
+        'Feather (https://feathericons.com/)'
+      ]
     }]).then((answers) => {
       this.props = answers
+      this.props.packs = ''
       this.log('\n\n')
       this.log(chalk.yellow('Name: ' + answers.name))
       this.log(chalk.yellow('Description: ' + answers.description))
-      this.log(chalk.yellow('Front-end Framework: ' + answers.style))
+      this.log(chalk.yellow('Front-end CSS Framework: ' + answers.style))
+      this.log(chalk.yellow('Icons: ' + answers.icons))
       this.log('\n\n')
 
-      this.props.style = this.props.style.toLowerCase().replace('angular ', '')
+      this.props.style = this.props.style.toLowerCase().replace('angular ', '').replace(/\s\((.*)/, '')
+      this.props.icon = this.props.icon.toLowerCase().replace(/\s\((.*)/, '')
+      this.props.feather = ''
     })
 
   }
@@ -51,7 +69,6 @@ module.exports = class extends Generator {
       ['core/', 'karma.conf.js'],
       ['core/', 'gulpfile.js'],
       ['core/', '.editorconfig'],
-      ['core/', '.angular-cli.json'],
       ['core/', 'e2e'],
       ['core/', 'server'],
       ['core/', 'client/typings.d.ts'],
@@ -67,25 +84,39 @@ module.exports = class extends Generator {
 
     files.push(['styles/' + this.props.style + '/', 'client/app'])
     files.push(['styles/' + this.props.style + '/', 'client/index.html'])
-    files.push(['styles/' + this.props.style + '/', 'client/dist/index.html'])
     files.push(['styles/' + this.props.style + '/', 'client/main.ts'])
     files.push(['styles/' + this.props.style + '/', 'client/styles.css'])
-    files.push(['styles/' + this.props.style + '/', '.angular-cli.json'])
+    files.push(['styles/' + this.props.style + '/', 'client/dist/index.html'])
 
     switch (this.props.style) {
-      case 'material':
-        this.props.style = '@angular/material@5.1.0 @angular/cdk @angular/animations @angular/forms hammerjs'
-        break
-      case 'bootstrap':
-        this.props.style = 'jquery bootstrap'
-        break
       case 'bulma':
         this.fs.copy(
           this.templatePath('styles/bulma/client/assets/made-with-bulma.png'),
           this.destinationPath('client/assets/made-with-bulma.png'))
-        this.props.style = 'bulma'
+        this.props.packs = 'bulma'
+        break
+      case 'bootstrap':
+        this.props.packs = 'jquery bootstrap'
+        break
+      case 'material':
+        this.props.packs = '@angular/material@5.1.0 @angular/cdk @angular/animations @angular/forms hammerjs'
         break
       default:
+        break
+    }
+
+    switch (this.props.icon) {
+      case 'fontawesome':
+        this.props.packs += ' font-awesome'
+        files.push(['styles/' + this.props.style + '/icons/fontawesome', '.angular-cli.json'])
+        break
+      case 'feather':
+        this.props.packs += ' feather-icons'
+        files.push(['styles/' + this.props.style + '/icons/feather', '.angular-cli.json'])
+        this.props.feather = "<script>window.onload = function() {feather.replace()}</script>"
+        break
+      default:
+        files.push(['styles/' + this.props.style + '/', '.angular-cli.json'])
         break
     }
 
@@ -94,7 +125,8 @@ module.exports = class extends Generator {
         this.templatePath(file[0] + file[1]),
         this.destinationPath(file[1]), {
           name: this.props.name,
-          description: this.props.description
+          description: this.props.description,
+          feather: this.props.feather
         }
       )
     }
@@ -109,7 +141,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.npmInstall(this.props.style.split(' '), {
+    this.npmInstall(this.props.packs.split(' '), {
       'save': true
     })
     this.npmInstall().then(() => {
