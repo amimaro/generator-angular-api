@@ -86,6 +86,13 @@ The generator has three design options.
 | Bootstrap        | [![npm package](https://badge.fury.io/js/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)         | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://getbootstrap.com/docs/4.0/getting-started/introduction/) |
 | Angular Material | [![npm package](https://badge.fury.io/js/%40angular%2Fmaterial.svg)](https://www.npmjs.com/package/@angular/material) | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://material.angular.io/components/categories)               |
 
+##### Icons
+
+| Name                                   | Version                                                                                              | Docs                                                                                     |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Font Awesome | [![npm version](https://badge.fury.io/js/font-awesome.svg)](https://badge.fury.io/js/font-awesome)   | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](http://fontawesome.io/)   |
+| Feather   | [![npm version](https://badge.fury.io/js/feather-icons.svg)](https://badge.fury.io/js/feather-icons) | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](http://feathericons.com/) |
+
 ### Back-end
 
 The back-end api was generated based on [generator-api](https://github.com/ndelvalle/generator-api) project which uses NodeJS, Express and Mongoose.
