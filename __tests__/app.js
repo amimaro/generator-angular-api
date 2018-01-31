@@ -23,16 +23,27 @@ let files = [
   'client/assets/.gitkeep'
 ]
 
-let fronts = ['None', 'Angular Material', 'Bootstrap', 'Bulma']
+let prompts = []
+let icons = ['None', 'Fontawesome', 'Feather']
+let styles = ['None', 'Angular Material', 'Bootstrap', 'Bulma']
+for (let f of styles) {
+  for (let i of icons) {
+    prompts.push({
+      style: f,
+      icon: i
+    })
+  }
+}
 
-for (let f of fronts) {
-  describe('generator-angular-api:app Front-end = ' + f, () => {
+for (let p of prompts) {
+  describe('generator-angular-api:app Front-end: ' + p.style + ', Icon: ' + p.icon, () => {
     beforeAll(() => {
       return helpers.run(path.join(__dirname, '../generators/app'))
         .withPrompts({
           name: 'name',
           description: 'description',
-          style: f,
+          style: p.style,
+          icon: p.icon
         });
     });
 
@@ -42,23 +53,37 @@ for (let f of fronts) {
 
     it('check configs', () => {
       assert.file(['.gitignore']);
-      if (f === 'Angular Material') {
+      assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
+      if (p.style === 'Angular Material') {
         assert.fileContent('client/main.ts', /import 'hammerjs';/);
-        assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
         assert.fileContent('client/styles.css', /@import '~@angular\/material\/prebuilt-themes\/deeppurple-amber\.css';/);
-      } else if (f === 'Bootstrap') {
+      } else if (p.style === 'Bootstrap') {
         assert.noFileContent('client/main.ts', /import 'hammerjs';/);
-        assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
+        assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/bootstrap\/dist\/css\/bootstrap\.min\.css"/);
+        assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/jquery\/dist\/jquery\.min\.js"/);
         assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/bootstrap\/dist\/js\/bootstrap\.bundle\.min\.js"/);
-      } else if (f === 'Bulma') {
+      } else if (p.style === 'Bulma') {
         assert.noFileContent('client/main.ts', /import 'hammerjs';/);
         assert.file(['client/assets/made-with-bulma.png']);
         assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/bulma\/css\/bulma\.css"/);
-        assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
       } else {
         assert.noFileContent('client/main.ts', /import 'hammerjs';/);
-        assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
-        assert.fileContent('.angular-cli.json', /"styles": \["styles\.css"\]/);
+        assert.fileContent('.angular-cli.json', /"styles\.css"/);
+      }
+    });
+
+    it('check icons', () => {
+      if (p.icon === 'Fontawesome') {
+        assert.noFileContent('client/index.html', /feather\.replace()/);
+        assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/font-awesome\/css\/font-awesome\.min\.css"/);
+      } else if (p.icon === 'Feather') {
+        assert.fileContent('client/index.html', /feather\.replace()/);
+        assert.fileContent('.angular-cli.json', /"\.\.\/node_modules\/feather-icons\/dist\/feather\.min\.js"/);
+      } else {
+        assert.noFileContent('client/index.html', /feather\.replace()/);
+        assert.noFileContent('.angular-cli.json', /"\.\.\/node_modules\/feather-icons\/dist\/feather\.min\.js"/);
+        assert.noFileContent('.angular-cli.json', /"\.\.\/node_modules\/font-awesome\/css\/font-awesome\.min\.css"/);
+        assert.fileContent('.angular-cli.json', /"styles\.css"/);
       }
     });
 
