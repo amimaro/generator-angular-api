@@ -73,12 +73,10 @@ module.exports = class extends Generator {
       ['core/', 'tsconfig.json'],
       ['core/', 'README.md'],
       ['core/', 'protractor.conf.js'],
-      ['core/', 'package.json'],
       ['core/', 'karma.conf.js'],
       ['core/', 'gulpfile.js'],
       ['core/', '.editorconfig'],
       ['core/', 'e2e'],
-      ['core/', 'server'],
       ['core/', 'client/typings.d.ts'],
       ['core/', 'client/tsconfig.spec.json'],
       ['core/', 'client/tsconfig.app.json'],
@@ -90,7 +88,16 @@ module.exports = class extends Generator {
       ['core/', 'client/assets/.gitkeep'],
     ]
 
-    files.push(['styles/' + this.props.style + '/', 'client/app'])
+    if (this.props.auth === 'No') {
+      files.push(['core/', 'package.json'])
+      files.push(['styles/' + this.props.style + '/', 'client/app'])
+      files.push(['core/', 'server'])
+    } else {
+      files.push(['auth/', 'package.json'])
+      files.push(['auth/styles/' + this.props.style + '/', 'client/app'])
+      files.push(['auth/', 'server'])
+    }
+
     files.push(['styles/' + this.props.style + '/', 'client/index.html'])
     files.push(['styles/' + this.props.style + '/', 'client/main.ts'])
     files.push(['styles/' + this.props.style + '/', 'client/styles.css'])
