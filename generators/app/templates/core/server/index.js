@@ -1,29 +1,29 @@
 const express    = require('express');
-const mongoose   = require('mongoose');
-const helmet     = require('helmet');
-const bodyParser = require('body-parser');
-const morgan     = require('morgan');
-const bluebird   = require('bluebird');
+const app  = express();
 require('dotenv').config()
-
-const config = require('./config');
+const port         = process.env.PORT || 8080
+const environment  = process.env.NODE_ENV || 'dev'
+const configDB     = require('./config/database')
+const morgan     = require('morgan');
+const helmet     = require('helmet');
+const bluebird   = require('bluebird');
+const mongoose   = require('mongoose');
+const bodyParser = require('body-parser');
 const routes = require('./routes');
 
-const app  = express();
-
-mongoose.Promise = bluebird;
-mongoose.connect(config.mongo.url);
+mongoose.Promise = bluebird
+mongoose.connect(configDB.mongo.url)
 
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(morgan('tiny'));
+app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use('/', routes);
 
-app.listen(config.server.port, () => {
-  console.log(`Connected on http://localhost:${config.server.port}`);
-});
+app.listen(port, () => {
+  console.log(`The magic happens on http://localhost:${port}`);
+})
 
 module.exports = app;
