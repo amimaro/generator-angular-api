@@ -26,24 +26,29 @@ let files = [
 let prompts = []
 let icons = ['None', 'Fontawesome', 'Feather']
 let styles = ['None', 'Angular Material', 'Bootstrap', 'Bulma']
-for (let f of styles) {
+let auth = ['No', 'Yes']
+for (let s of styles) {
   for (let i of icons) {
-    prompts.push({
-      style: f,
-      icon: i
-    })
+    for (let a of auth) {
+      prompts.push({
+        style: s,
+        icon: i,
+        auth: a
+      })
+    }
   }
 }
 
 for (let p of prompts) {
-  describe('generator-angular-api:app Front-end: ' + p.style + ', Icon: ' + p.icon, () => {
+  describe('generator-angular-api:app Front-end: ' + p.style + ', Icon: ' + p.icon + ', Auth: ' + p.auth, () => {
     beforeAll(() => {
       return helpers.run(path.join(__dirname, '../generators/app'))
         .withPrompts({
           name: 'name',
           description: 'description',
           style: p.style,
-          icon: p.icon
+          icon: p.icon,
+          auth: p.auth
         });
     });
 
@@ -51,7 +56,7 @@ for (let p of prompts) {
       assert.file(files);
     });
 
-    it('check configs', () => {
+    it('check styles', () => {
       assert.file(['.gitignore']);
       assert.noFileContent('.angular-cli.json', /"name": "<%= name %>"/);
       if (p.style === 'Angular Material') {
@@ -84,6 +89,16 @@ for (let p of prompts) {
         assert.noFileContent('.angular-cli.json', /"\.\.\/node_modules\/feather-icons\/dist\/feather\.min\.js"/);
         assert.noFileContent('.angular-cli.json', /"\.\.\/node_modules\/font-awesome\/css\/font-awesome\.min\.css"/);
         assert.fileContent('.angular-cli.json', /"styles\.css"/);
+      }
+    });
+
+    it('check auth', () => {
+      if (p.auth === 'No') {
+        assert.noFile(['server/config/auth.js']);
+        assert.noFile(['server/config/passport.js']);
+      } else if (p.auth === 'Yes') {
+        assert.file(['server/config/auth.js']);
+        assert.file(['server/config/passport.js']);
       }
     });
 
