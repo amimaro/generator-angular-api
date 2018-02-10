@@ -3,4 +3,4 @@ const foodSchema = require('./schema');
 
 class FoodFacade extends Facade {}
 
-module.exports = new FoodFacade('Food', foodSchema);
+module.exports = new FoodFacade(foodSchema);
