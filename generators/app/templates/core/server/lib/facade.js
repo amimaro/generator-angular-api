@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 class Facade {
-  constructor(name, schema) {
-    this.model = mongoose.model(name, schema);
+  constructor(schema) {
+    this.model = schema;
   }
 
   create(body) {
