@@ -160,7 +160,7 @@ module.exports = class extends Generator {
       'save': true
     })
     this.npmInstall().then(() => {
-      this.log('\n\nEverything is ready!!')
+      this.log('\n\nDone!!')
       this.log('Run ' + chalk.green('npm run dev') + ' to start creating.\n')
     })
   }
