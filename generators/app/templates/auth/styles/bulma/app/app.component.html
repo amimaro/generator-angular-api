@@ -1,0 +1,56 @@
+<section class="hero is-primary">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a href="https://bulma.io" target="_blank">
+            <img src="assets/made-with-bulma.png" alt="Made with Bulma" width="256" height="48">
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" [routerLink]="['/']">
+              Home
+            </a>
+            <a class="navbar-item" [routerLink]="['/profile']">
+              Profile
+            </a>
+            <a class="navbar-item" [routerLink]="['/login']">
+              Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        gen
+      </h1>
+      <h2 class="subtitle">
+        Source available at client/app/app.component.html to get started
+      </h2>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </div>
+</footer>

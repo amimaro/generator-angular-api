@@ -1,0 +1,155 @@
+<div style="width: 60%; margin: 0 auto; padding-bottom: 20px" align="center" *ngIf="user">
+  <h1 class="title" style="padding-top: 40px">
+    Profile
+  </h1>
+  <div class="box">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <div class="is-pulled-right">
+            <a class="button" href="/api/user/auth/logout">
+              <span class="icon is-small">
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+              <span>Logout</span>
+            </a>
+          </div>
+          <p class="subtitle">Add Connections</p>
+          <a class="button facebook" *ngIf="!user.facebook" href="/api/user/auth/facebook/login">
+            <span class="icon">
+              <i class="fab fa-facebook-f"></i>
+            </span>
+            <span>Facebook</span>
+          </a>
+          <a class="button twitter" *ngIf="!user.twitter" href="/api/user/auth/twitter/login">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+            <span>Twitter</span>
+          </a>
+          <a class="button google" *ngIf="!user.google" href="/api/user/auth/google/login">
+            <span class="icon">
+              <i class="fab fa-google-plus-g"></i>
+            </span>
+            <span>Google</span>
+          </a>
+          <a class="button" *ngIf="!user.github" href="/api/user/auth/github/login">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+            <span>Github</span>
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="box" *ngIf="user.local">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p class="subtitle">Local Login</p>
+          <p><strong>Id:</strong> {{ user._id }}</p>
+          <p><strong>Email:</strong> {{ user.local.email }}</p>
+          <p><strong>Password:</strong> {{ user.local.password }}</p>
+          <div class="is-pulled-right">
+            <a class="button" href="/api/user/unlink/local">
+              <span class="icon is-small">
+                <i class="fas fa-unlink"></i>
+              </span>
+              <span>Unlink</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="box" *ngIf="user.facebook">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p class="subtitle">Facebook Login</p>
+          <p><strong>Id:</strong> {{ user._id }}</p>
+          <p><strong>Facebook Id:</strong> {{ user.facebook.id }}</p>
+          <p><strong>Token:</strong> {{ user.facebook.token }}</p>
+          <p><strong>Name:</strong> {{ user.facebook.name }}</p>
+          <p><strong>Email:</strong> {{ user.facebook.email }}</p>
+          <div class="is-pulled-right 	">
+            <a class="button" href="/api/user/unlink/facebook">
+              <span class="icon is-small">
+                <i class="fas fa-unlink"></i>
+              </span>
+              <span>Unlink</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="box" *ngIf="user.twitter">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p class="subtitle">Twitter Login</p>
+          <p><strong>Id:</strong> {{ user._id }}</p>
+          <p><strong>Twitter Id:</strong> {{ user.twitter.id }}</p>
+          <p><strong>Token:</strong> {{ user.twitter.token }}</p>
+          <p><strong>Username:</strong> {{ user.twitter.username }}</p>
+          <p><strong>Display Name:</strong> {{ user.twitter.displayName }}</p>
+          <div class="is-pulled-right 	">
+            <a class="button" href="/api/user/unlink/twitter">
+              <span class="icon is-small">
+                <i class="fas fa-unlink"></i>
+              </span>
+              <span>Unlink</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="box" *ngIf="user.google">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p class="subtitle">Google Login</p>
+          <p><strong>Id:</strong> {{ user._id }}</p>
+          <p><strong>Google Id:</strong> {{ user.google.id }}</p>
+          <p><strong>Token:</strong> {{ user.google.token }}</p>
+          <p><strong>Name:</strong> {{ user.google.name }}</p>
+          <p><strong>Email:</strong> {{ user.google.email }}</p>
+          <div class="is-pulled-right">
+            <a class="button" href="/api/user/unlink/google">
+              <span class="icon is-small">
+                <i class="fas fa-unlink"></i>
+              </span>
+              <span>Unlink</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="box" *ngIf="user.github">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p class="subtitle">Github Login</p>
+          <p><strong>Id:</strong> {{ user._id }}</p>
+          <p><strong>Github Id:</strong> {{ user.github.id }}</p>
+          <p><strong>Name:</strong> {{ user.github.username }}</p>
+          <p><strong>Display Name:</strong> {{ user.github.displayName }}</p>
+          <p><strong>Email:</strong> {{ user.github.email }}</p>
+          <p><strong>Public Repos:</strong> {{ user.github.publicRepos }}</p>
+          <div class="is-pulled-right 	">
+            <a class="button" href="/api/user/unlink/github">
+              <span class="icon is-small">
+                <i class="fas fa-unlink"></i>
+              </span>
+              <span>Unlink</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

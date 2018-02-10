@@ -41,6 +41,14 @@ module.exports = class extends Generator {
         'Fontawesome (http://fontawesome.io/)',
         'Feather (https://feathericons.com/)'
       ]
+    }, {
+      type: 'list',
+      name: 'auth',
+      message: 'Wanna add authentication? (Facebook, Google, Twitter, Github)',
+      choices: [
+        'No',
+        'Yes'
+      ]
     }]).then((answers) => {
       this.props = answers
       this.props.packs = ''
