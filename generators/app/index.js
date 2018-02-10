@@ -56,7 +56,8 @@ module.exports = class extends Generator {
       this.log(chalk.yellow('Name: ' + answers.name))
       this.log(chalk.yellow('Description: ' + answers.description))
       this.log(chalk.yellow('Front-end CSS Framework: ' + answers.style))
-      this.log(chalk.yellow('Icons: ' + answers.icons))
+      this.log(chalk.yellow('Icon: ' + answers.icon))
+      this.log(chalk.yellow('Auth: ' + answers.auth))
       this.log('\n\n')
 
       this.props.style = this.props.style.toLowerCase().replace('angular ', '').replace(/\s\((.*)/, '')
