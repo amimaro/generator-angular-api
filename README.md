@@ -138,11 +138,21 @@ To run locally, requires MongoDB installed and running ([Install MongoDB](https:
 │   │   │   │   ├── home.component.html
 │   │   │   │   ├── home.component.spec.ts
 │   │   │   │   └── home.component.ts
-│   │   │   └── not-found
-│   │   │       ├── not-found.component.css
-│   │   │       ├── not-found.component.html
-│   │   │       ├── not-found.component.spec.ts
-│   │   │       └── not-found.component.ts
+│   │   │   ├── login (for authentication)
+│   │   │   │   ├── login.component.css
+│   │   │   │   ├── login.component.html
+│   │   │   │   ├── login.component.spec.ts
+│   │   │   │   └── login.component.ts
+│   │   │   ├── not-found
+│   │   │   |   ├── not-found.component.css
+│   │   │   |   ├── not-found.component.html
+│   │   │   |   ├── not-found.component.spec.ts
+│   │   │   |    └── not-found.component.ts
+│   │   │   └── profile (for authentication)
+│   │   │       ├── profile.component.css
+│   │   │       ├── profile.component.html
+│   │   │       ├── profile.component.spec.ts
+│   │   │       └── profile.component.ts
 │   │   └── services
 │   │       ├── app.service.spec.ts
 │   │       └── app.service.ts
