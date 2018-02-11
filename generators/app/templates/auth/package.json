@@ -14,7 +14,7 @@
     "e2e": "ng e2e",
     "server": "node index.js",
     "server:dev": "nodemon --watch server server/index.js",
-    "dev": "concurrently \"npm run watch\" \"npm run server:dev\" & gulp"
+    "dev": "concurrently \"npm run watch\" \"gulp\""
   },
   "engines": {
     "node": ">=9",
@@ -61,9 +61,10 @@
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
-    "browser-sync": "^2.23.6",
     "codelyzer": "^4.0.1",
+    "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
