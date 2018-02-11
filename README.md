@@ -28,17 +28,26 @@ yo angular-api
 npm run dev
 ```
 
-Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. Wait until the app is built. At any change, the app will automatically rebuild and sync the browser.
+Run `npm run dev` for a dev server. The browser will load `http://localhost:8080/`. Wait until the app is built. At any change, the app will automatically rebuild and sync the browser.
 
-##### .env example (place it on root directory)
+##### .env
 ```
-PORT=3000
-NODE_ENV=dev
-APP_URL=http://localhost:3000/
+# Node Server Port
+PORT=8000
+
+# Node Server Url
+APP_URL=http://localhost:8000/
+
+# BrowserSync Proxy Url
+SYNC_URL=http://localhost:8080/
+
+# MongodDB Url
 MONGO_DB_URI=http://localhost:27017/angular-api
 ```
 
-### Code scaffolding
+### Client Code scaffolding
+
+You can use `ng` [Angular CLI](https://github.com/angular/angular-cli) for client scaffolding.
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
@@ -95,7 +104,7 @@ The generator has three design options.
 
 ### Back-end
 
-The back-end api was generated based on [generator-api](https://github.com/ndelvalle/generator-api) project which uses NodeJS, Express and Mongoose.
+The API was built using Express and has support for MongoDB and Authentication ([passportjs](https://github.com/jaredhanson/passport)).
 
 To run locally, requires MongoDB installed and running ([Install MongoDB](https://docs.mongodb.com/manual/installation/)).
 
@@ -109,6 +118,10 @@ To run locally, requires MongoDB installed and running ([Install MongoDB](https:
 | morgan      | [![npm package](https://badge.fury.io/js/morgan.svg)](https://www.npmjs.com/package/morgan)      | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://github.com/expressjs/morgan)      | HTTP request logger middleware for node.js                                                             |
 | bluebird    | [![npm package](https://badge.fury.io/js/bluebird.svg)](https://www.npmjs.com/package/bluebird)    | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://github.com/petkaantonov/bluebird) | Bluebird is a fully featured promise library with focus on innovative features and performance         |
 | dotenv      | [![npm package](https://badge.fury.io/js/dotenv.svg)](https://www.npmjs.com/package/dotenv)      | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://github.com/motdotla/dotenv)       | Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. |
+| passport    | [![npm version](https://badge.fury.io/js/passport.svg)](https://badge.fury.io/js/passport)      | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](http://www.passportjs.org/docs/)       |  Express-compatible authentication middleware for Node.js. |
+| cookie-parser | [![npm version](https://badge.fury.io/js/cookie-parser.svg)](https://badge.fury.io/js/cookie-parser)      | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://github.com/expressjs/cookie-parser)       |  Parse HTTP request cookies. |
+| express-session | [![npm version](https://badge.fury.io/js/express-session.svg)](https://badge.fury.io/js/express-session)      | [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](https://github.com/expressjs/session)       | Simple session middleware for Express. |
+
 
 ## File tree
 ```
@@ -153,14 +166,18 @@ To run locally, requires MongoDB installed and running ([Install MongoDB](https:
 ├── .gitignore
 ├── .angular-cli.json
 ├── .editorconfig
+├── .env
 ├── gulpfile.js
 ├── karma.conf.js
 ├── package.json
 ├── protractor.conf.js
 ├── README.md
 ├── server
-│   ├── config.js
 │   ├── index.js
+│   ├── config
+│   │   ├── auth.js (for authentication)
+│   │   ├── passport.js (for authentication)
+│   │   └── database.js
 │   ├── lib
 │   │   ├── controller.js
 │   │   └── facade.js
