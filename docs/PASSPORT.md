@@ -2,10 +2,10 @@
 
 The authentication process is managed with [passportjs](http://www.passportjs.org) which simplifies this task. But to make it work we need to create an app. Below, there are instructions about how to create an app for authentication with some of the most used social network:
 
-* [Github](#Github)
-* [Twitter](#Twitter)
-* [Facebook](#Facebook)
-* [Google](#Google)
+* [Github](#github)
+* [Twitter](#twitter)
+* [Facebook](#facebook)
+* [Google](#google)
 
 In these cases the domain URL is http://localhost:8080 and the callback is http://localhost:8080/api/user/auth/[socialNetwork]/callback.
 
