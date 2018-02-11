@@ -1,7 +1,7 @@
 const express      = require('express')
 const app  = express()
 require('dotenv').config()
-const port         = process.env.PORT || 8080
+const port         = process.env.PORT || 8000
 const environment  = process.env.NODE_ENV || 'dev'
 const helmet       = require('helmet')
 const morgan       = require('morgan')
