@@ -9,11 +9,21 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 import { AppService } from './services/app.service';
+import { LoginComponent } from './pages/login/login.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   { path: '**', component: NotFoundComponent }
 ];
@@ -22,7 +32,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
