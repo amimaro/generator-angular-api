@@ -91,10 +91,12 @@ module.exports = class extends Generator {
 
     if (this.props.auth === 'No') {
       files.push(['core/', 'package.json'])
+      files.push(['core/', '.env'])
       files.push(['styles/' + this.props.style + '/', 'client/app'])
       files.push(['core/', 'server'])
     } else {
       files.push(['auth/', 'package.json'])
+      files.push(['auth/', '.env'])
       files.push(['auth/styles/' + this.props.style + '/', 'client/app'])
       files.push(['auth/', 'server'])
     }
