@@ -14,6 +14,7 @@ let files = [
   'gulpfile.js',
   '.editorconfig',
   '.angular-cli.json',
+  '.env',
   'e2e',
   'server',
   'client/index.html',
@@ -96,9 +97,11 @@ for (let p of prompts) {
       if (p.auth === 'No') {
         assert.noFile(['server/config/auth.js']);
         assert.noFile(['server/config/passport.js']);
+        assert.noFileContent('.env', /KEY/);
       } else if (p.auth === 'Yes') {
         assert.file(['server/config/auth.js']);
         assert.file(['server/config/passport.js']);
+        assert.fileContent('.env', /KEY/);
       }
     });
 
