@@ -1,0 +1,69 @@
+<div style="width: 60%; margin: 0 auto; padding-bottom: 20px" align="center" *ngIf="user">
+  <h1>
+    Profile
+  </h1>
+  <div>
+    <a href="/api/user/auth/logout">
+      Logout
+    </a>
+  </div>
+  <p class="subtitle">Add Connections</p>
+  <div>
+    <button type="button" class="btn" *ngIf="!user.facebook" style="background-color: rgb(59, 89, 152); color: white;" (click)="loginFacebook()">
+        Facebook
+    </button>
+    <button type="button" class="btn" *ngIf="!user.twitter" style="background-color:rgb(29, 161, 242); color: white;" (click)="loginTwitter()">
+        Twitter
+    </button>
+    <button type="button" class="btn" *ngIf="!user.google" style="background-color: rgb(219, 68, 55); color: white;" (click)="loginGoogle()">
+        Google
+    </button>
+    <button type="button" class="btn" *ngIf="!user.github" (click)="loginGithub()">
+        Github
+    </button>
+  </div>
+  <hr>
+</div>
+<div style="width: 60%; margin: 0 auto; padding-bottom: 20px" *ngIf="user">
+  <div *ngIf="user.facebook">
+    <h3>Facebook Account</h3>
+    <p><strong>Id:</strong> {{ user._id }}</p>
+    <p><strong>Facebook Id:</strong> {{ user.facebook.id }}</p>
+    <p><strong>Token:</strong> {{ user.facebook.token }}</p>
+    <p><strong>Name:</strong> {{ user.facebook.name }}</p>
+    <p><strong>Email:</strong> {{ user.facebook.email }}</p>
+    <a href="/api/user/unlink/facebook">Unlink</a>
+    <hr>
+  </div>
+  <div *ngIf="user.twitter">
+    <h3>Twitter Account</h3>
+    <p><strong>Id:</strong> {{ user._id }}</p>
+    <p><strong>Twitter Id:</strong> {{ user.twitter.id }}</p>
+    <p><strong>Token:</strong> {{ user.twitter.token }}</p>
+    <p><strong>Username:</strong> {{ user.twitter.username }}</p>
+    <p><strong>Display Name:</strong> {{ user.twitter.displayName }}</p>
+    <a href="/api/user/unlink/twitter">Unlink</a>
+    <hr>
+  </div>
+  <div *ngIf="user.google">
+    <h3>Google Account</h3>
+    <p><strong>Id:</strong> {{ user._id }}</p>
+    <p><strong>Google Id:</strong> {{ user.google.id }}</p>
+    <p><strong>Token:</strong> {{ user.google.token }}</p>
+    <p><strong>Name:</strong> {{ user.google.name }}</p>
+    <p><strong>Email:</strong> {{ user.google.email }}</p>
+    <a href="/api/user/unlink/google">Unlink</a>
+    <hr>
+  </div>
+  <div *ngIf="user.github">
+    <h3>Github Account</h3>
+    <p><strong>Id:</strong> {{ user._id }}</p>
+    <p><strong>Github Id:</strong> {{ user.github.id }}</p>
+    <p><strong>Name:</strong> {{ user.github.username }}</p>
+    <p><strong>Display Name:</strong> {{ user.github.displayName }}</p>
+    <p><strong>Email:</strong> {{ user.github.email }}</p>
+    <p><strong>Public Repos:</strong> {{ user.github.publicRepos }}</p>
+    <a href="/api/user/unlink/github">Unlink</a>
+    <hr>
+  </div>
+</div>
