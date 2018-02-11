@@ -28,23 +28,6 @@
       </div>
     </article>
   </div>
-  <div class="box" *ngIf="user.local">
-    <article class="media">
-      <div class="media-content">
-        <div class="content">
-          <p class="subtitle">Local Login</p>
-          <p><strong>Id:</strong> {{ user._id }}</p>
-          <p><strong>Email:</strong> {{ user.local.email }}</p>
-          <p><strong>Password:</strong> {{ user.local.password }}</p>
-          <div class="is-pulled-right">
-            <a class="button" href="/api/user/unlink/local">
-              Unlink
-            </a>
-          </div>
-        </div>
-      </div>
-    </article>
-  </div>
   <div class="box" *ngIf="user.facebook">
     <article class="media">
       <div class="media-content">
