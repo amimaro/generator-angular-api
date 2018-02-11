@@ -30,7 +30,7 @@ Go to https://developers.facebook.com/ and at the right upper corner go to "My A
 
 ### Google
 
-Go tohttps://console.developers.google.com/project/_/apiui/apis/library and follow the instructions below.
+Go to https://console.developers.google.com/project/_/apiui/apis/library and follow the instructions below.
 
 Select an existing project, or create a new one by selecting "Create a new project".
 ![create-google1](./assets/createGoogleProject.gif)
