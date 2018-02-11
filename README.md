@@ -5,7 +5,9 @@
 ## generator-angular-api
 
 RESTful fullstack generator with [Angular CLI](https://github.com/angular/angular-cli), [Express.js](https://expressjs.com) and [Mongoose](https://mongoosejs.com).
-It has three options of design components [Bulma](https://bulma.io/), [Bootstrap](https://getbootstrap.com/) and [Angular Material](https://material.angular.io/), each one with a basic template to start developing.
+It has three options of design components, each one with a basic template to start developing, two icons library and authentication with the most used social medias.
+
+[How to create an app for authentication?](./docs/PASSPORT.md)
 
 ## Generator Installation
 
