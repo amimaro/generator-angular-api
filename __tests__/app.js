@@ -97,10 +97,14 @@ for (let p of prompts) {
       if (p.auth === 'No') {
         assert.noFile(['server/config/auth.js']);
         assert.noFile(['server/config/passport.js']);
+        assert.noFile('client/app/pages/login/login.component.html');
+        assert.noFile('client/app/pages/profile/profile.component.html');
         assert.noFileContent('.env', /KEY/);
       } else if (p.auth === 'Yes') {
         assert.file(['server/config/auth.js']);
         assert.file(['server/config/passport.js']);
+        assert.fileContent('client/app/pages/login/login.component.html', /Github/);
+        assert.fileContent('client/app/pages/profile/profile.component.html', /Github/);
         assert.fileContent('.env', /KEY/);
       }
     });
