@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "main": "server/index.js",
-  "description": "Awesome description",
+  "description": "<%= description %>",
   "scripts": {
     "ng": "ng",
     "client": "ng serve -o",
