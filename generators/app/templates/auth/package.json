@@ -12,7 +12,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "node index.js",
+    "start": "node server/index.js",
+    "postinstall": "ng build --aot -prod",
     "server:dev": "nodemon --watch server server/index.js",
     "dev": "concurrently \"npm run watch\" \"gulp\""
   },
@@ -24,7 +25,8 @@
   "dependencies": {
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
-    "@angular/compiler": "^5.2.0",
+    "@angular/cli": "1.6.5",
+    "@angular/compiler-cli": "^5.2.0",
     "@angular/core": "^5.2.0",
     "@angular/forms": "^5.2.0",
     "@angular/http": "^5.2.0",
@@ -62,6 +64,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "^4.0.1",
+    "enhanced-resolve": "^3.3.0",
     "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
