@@ -1,12 +1,22 @@
 const path = require('path');
+const fs = require('fs');
 const Router = require('express').Router;
 const router = new Router();
 
-const user = require('./model/user/router');
-const food = require('./model/food/router');
+// Loads dynamically all endpoints within models directory
+const dirs = p => fs.readdirSync(p).filter(f => fs.statSync(path.join(p, f)).isDirectory())
+dirs('./server/model').map((endpoint) => {
+  router.use(`/api/${endpoint}`, require(`./model/${endpoint}/router`));
+})
 
-router.use('/api/user', user);
-router.use('/api/food', food);
+/*
+
+  To load endpoints manually you can follow the example bellow
+
+    const ENDPOINT = require('./model/ENDPOINT/router');
+    router.use('/api/ENDPOINT', ENDPOINT);
+
+*/
 
 router.get('*', function(req, res) {
   res.sendfile(path.resolve('client/dist/index.html'));
