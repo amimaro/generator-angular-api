@@ -32,6 +32,16 @@ npm run dev
 
 Run `npm run dev` for a dev server. The browser will load `http://localhost:8080/`. Wait until the app is built. At any change, the app will automatically rebuild and sync the browser.
 
+##### Creating API endpoints
+
+To generate a new API endpoit:
+
+```bash
+yo angular-api:endpoint
+```
+
+After that you may need to reload the server and the router will load dynamically the route.
+
 ##### .env
 ```
 # Node Server Port
@@ -41,10 +51,10 @@ PORT=8000
 APP_URL=http://localhost:8000/
 
 # BrowserSync Proxy Url
-SYNC_URL=http://localhost:8080/
+CALLBACK_URL=http://localhost:8080/
 
 # MongodDB Url
-MONGO_DB_URI=http://localhost:27017/angular-api
+MONGO_DB_URI=mongodb://localhost:27017/angular-api
 ```
 
 ### Client Code scaffolding
