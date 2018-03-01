@@ -40,4 +40,8 @@ export class AppService {
     window.location.href = '/api/user/auth/github/login';
   }
 
+  logout() {
+    window.location.href = '/api/user/auth/logout';
+  }
+
 }
