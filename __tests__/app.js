@@ -103,6 +103,10 @@ for (let p of prompts) {
       } else if (p.auth === 'Yes') {
         assert.file(['server/config/auth.js']);
         assert.file(['server/config/passport.js']);
+        assert.fileContent('client/app/services/app.service.ts', /isLoggedIn/);
+        assert.fileContent('client/app/services/app.service.ts', /getIsLoggedIn/);
+        assert.fileContent('client/app/app.component.html', /\*ngIf="appService\.isLoggedIn"/);
+        assert.fileContent('client/app/app.component.html', /appService\.logout()/);
         assert.fileContent('client/app/pages/login/login.component.html', /Github/);
         assert.fileContent('client/app/pages/profile/profile.component.html', /Github/);
         assert.fileContent('.env', /KEY/);
