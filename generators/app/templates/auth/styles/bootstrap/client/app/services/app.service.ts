@@ -13,7 +13,9 @@ export class AppService {
   constructor(
     private router: Router,
     private http: HttpClient
-  ) { }
+  ) {
+    this.getIsLoggedIn();
+  }
 
   routeTo(route) {
     this.router.navigate(route);
