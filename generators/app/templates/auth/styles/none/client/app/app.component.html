@@ -2,8 +2,9 @@
 
 <div>
   <button type="button" [routerLink]="['/']">Home</button>
-  <button type="button" [routerLink]="['/login']">Login</button>
   <button type="button" [routerLink]="['/profile']">Profile</button>
+  <button type="button" [routerLink]="['/login']">Login</button>
+  <button type="button" (click)="appService.logout()">Logout</button>
 </div>
 
 <h3>

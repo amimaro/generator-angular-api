@@ -23,6 +23,9 @@
             <a class="navbar-item" [routerLink]="['/login']">
               Login
             </a>
+            <a class="navbar-item" (click)="appService.logout()">
+              Logout
+            </a>
           </div>
         </div>
       </div>

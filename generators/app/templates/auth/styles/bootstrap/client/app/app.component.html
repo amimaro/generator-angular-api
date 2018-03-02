@@ -9,14 +9,16 @@
       <li class="nav-item active">
         <a class="nav-link" href="#" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#" [routerLink]="['/profile']">Profile <span class="sr-only">(current)</span></a>
+      <li class="nav-item active" *ngIf="appService.isLoggedIn">
+        <a class="nav-link" href="#" [routerLink]="['/profile']">
+          Profile <span class="sr-only">(current)</span>
+        </a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#" [routerLink]="['/login']">Login <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item" (click)="appService.logout()">
+        <a class="nav-link" href="#">Logout</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
