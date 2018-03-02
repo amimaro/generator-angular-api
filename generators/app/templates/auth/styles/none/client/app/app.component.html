@@ -2,9 +2,9 @@
 
 <div>
   <button type="button" [routerLink]="['/']">Home</button>
-  <button type="button" [routerLink]="['/profile']">Profile</button>
-  <button type="button" [routerLink]="['/login']">Login</button>
-  <button type="button" (click)="appService.logout()">Logout</button>
+  <button type="button" [routerLink]="['/profile']" *ngIf="appService.isLoggedIn">Profile</button>
+  <button type="button" [routerLink]="['/login']" *ngIf="!appService.isLoggedIn">Login</button>
+  <button type="button" (click)="appService.logout()" *ngIf="appService.isLoggedIn">Logout</button>
 </div>
 
 <h3>

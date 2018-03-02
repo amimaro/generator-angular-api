@@ -17,13 +17,13 @@
             <a class="navbar-item" [routerLink]="['/']">
               Home
             </a>
-            <a class="navbar-item" [routerLink]="['/profile']">
+            <a class="navbar-item" [routerLink]="['/profile']" *ngIf="appService.isLoggedIn">
               Profile
             </a>
-            <a class="navbar-item" [routerLink]="['/login']">
+            <a class="navbar-item" [routerLink]="['/login']" *ngIf="!appService.isLoggedIn">
               Login
             </a>
-            <a class="navbar-item" (click)="appService.logout()">
+            <a class="navbar-item" (click)="appService.logout()" *ngIf="appService.isLoggedIn">
               Logout
             </a>
           </div>
