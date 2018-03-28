@@ -43,6 +43,7 @@ yo angular-api:endpoint
 After that you may need to reload the server and the router will load dynamically the route.
 
 ##### .env
+
 ```
 # Node Server Port
 PORT=8000
@@ -55,6 +56,12 @@ CALLBACK_URL=http://localhost:8080/
 
 # MongodDB Url
 MONGO_DB_URI=mongodb://localhost:27017/angular-api
+```
+
+Optionally, run the command bellow to generate a fresh .env file.
+
+```bash
+yo angular-api:dotenv
 ```
 
 ### Client Code scaffolding
