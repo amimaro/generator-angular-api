@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser')
 const session      = require('express-session')
 const configDB     = require('./config/database')
 const routes       = require('./routes')
-require('./config/passport')(passport);
+require('./config/passport')(passport)
 
 mongoose.Promise = bluebird
 mongoose.connect(configDB.mongo.url)
@@ -32,7 +32,7 @@ app.use(express.static(__dirname + '/../client/dist'))
 app.use('/', routes)
 
 app.listen(port, () => {
-  console.log(`The magic happens on http://localhost:${port}`);
+  console.log(`The magic happens on http://localhost:${port}`)
 })
 
 module.exports = app
